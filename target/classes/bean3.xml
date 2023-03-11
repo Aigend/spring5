@@ -6,10 +6,11 @@
     <!--实现自动装配
         bean 标签为autowire 配置为自动装配
         byName 根据属性的名称自动注入，emp的属性为dept 查找的时别的bean 的id值
-        byType 根据属性的类型自动注入
+        byType 根据属性的类型自动注入,如果存在多个相同类型的bean时，会报错，下面的dept1如果不注释，会报错
      -->
     <bean id="emp" class="org.example.autowire.Emp" autowire="byType">
 <!--        <property name="dept" ref="dpt"></property>-->
     </bean>
     <bean id="dept" class="org.example.autowire.Dept"></bean>
+<!--    <bean id="dept1" class="org.example.autowire.Dept"></bean>-->
 </beans>
