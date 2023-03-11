@@ -1,8 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="user" class="org.example.User"></bean>
-
+    <bean id="user" class="org.example.User">
+        <property name="name" value="xiaomi"></property>
+    </bean>
+    <bean id="userp" class="org.example.User" p:name="小明" scope="prototype"></bean>
+    <bean id="myBean" class="org.example.factbean.MyBean"></bean>
+    <bean id="stu" class="org.example.collecationtype.Stu">
+        <property name="courses">
+            <array>
+                <value>英语</value>
+                <value>java</value>
+                <value>python</value>
+            </array>
+        </property>
+        <property name="list">
+            <list>
+                <value>张三</value>
+                <value>李四</value>
+            </list>
+        </property>
+        <property name="courseList">
+            <list>
+                <ref bean="course1"></ref>
+                <ref bean="course2"></ref>
+            </list>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="JAVA" value="java"></entry>
+                <entry key="PYTHON" value="python"></entry>
+            </map>
+        </property>
+        <property name="set">
+            <set>
+                <value>Java</value>
+                <value>Python</value>
+            </set>
+        </property>
+    </bean>
+    <!--创建多个Course对象-->
+    <bean id="course1" class="org.example.collecationtype.Course">
+        <property name="cname" value="PHP"></property>
+    </bean>
+    <bean id="course2" class="org.example.collecationtype.Course">
+        <property name="cname" value="Spring"></property>
+    </bean>
 </beans>
