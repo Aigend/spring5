@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--配置连接池, 把外部的properties属性文件引入到spring配置文件中-->
+
+    <!--这里对classpath 不是太理解-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="DriverClassName" value="${prop.driverClass}"/>
+        <property name="Url" value="${prop.url}"/>
+        <property name="Username" value="${prop.userName}"/>
+        <property name="Password" value="${prop.password}"/>
+
+        <!--这些配置都是直接写死的，可以引入外部文件配置properties-->
+<!--        <property name="DriverClassName" value="com.mysql.jdbc.Driver"/>-->
+<!--        <property name="Url" value="jdbc:mysql//localhost:3306/userDb"/>-->
+<!--        <property name="Username" value="root"/>-->
+<!--        <property name="Password" value="root"/>-->
+    </bean>
+</beans>
